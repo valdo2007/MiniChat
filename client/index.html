@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiniChat</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Ecran de connexion -->
+    <div id="join-screen" class="join-screen">
+        <div class="join-card">
+            <h1>MiniChat</h1>
+            <p>Bienvenue dans notre espace de discussion</p>
+
+            <form id="join-form">
+                <input
+                    type="text"
+                    id="username-input"
+                    placeholder="Entrez votre pseudo"
+                    maxlength="20"
+                    autocomplete="off"
+                    required
+                >
+
+                <button type="submit">Rejoindre le chat</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Application de messagerie -->
+    <div id="chat-app" class="chat-app hidden">
+
+        <!-- Barre supérieure -->
+        <header class="chat-header">
+            <div class="brand">
+                <div class="brand-icon">M</div>
+
+                <div>
+                    <h1>MiniChat</h1>
+                    <span>Messagerie en temps réel</span>
+                </div>
+            </div>
+
+            <div class="connection-status">
+                <span id="connection-indicator" class="status-dot"></span>
+                <span id="connection-text">Connexion</span>
+            </div>
+        </header>
+
+        <!-- Corps de la messagerie -->
+        <main class="chat-layout">
+
+            <!-- Liste des utilisateurs -->
+            <aside class="sidebar">
+
+                <div class="sidebar-title">
+                    <h2>Participants</h2>
+                    <span id="users-count" class="users-count">0</span>
+                </div>
+
+                <ul id="users-list" class="users-list"></ul>
+
+            </aside>
+
+            <!-- Zone de discussion -->
+            <section class="chat-main">
+
+                <div class="conversation-header">
+                    <div>
+                        <h2>Discussion générale</h2>
+                        <p>Les messages sont transmis en temps réel</p>
+                    </div>
+                </div>
+
+                <!-- Messages -->
+                <div id="messages-container" class="messages-container">
+
+                    <div class="welcome-message">
+                        <h3>Bienvenue sur MiniChat !</h3>
+                        <p>Envoyez votre premier message pour démarrer la conversation.</p>
+                    </div>
+
+                </div>
+
+                <!-- Formulaire d'envoi -->
+                <form id="message-form" class="message-form">
+
+                    <input
+                        type="text"
+                        id="message-input"
+                        placeholder="Écrivez votre message..."
+                        maxlength="1000"
+                        autocomplete="off"
+                    >
+
+                    <button type="submit" id="send-button">
+                        Envoyer
+                    </button>
+
+                </form>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- Socket.IO côté navigateur -->
+    <script src="/socket.io/socket.io.js"></script>
+
+    <!-- JavaScript de l'application -->
+    <script src="script.js"></script>
+
+</body>
+</html>
